@@ -1,0 +1,252 @@
+""" i am multiline comment
+# This is a demo program
+inputString = input('what is ur name:')
+print('your name is:', inputString)
+
+# Type conversion
+num_int = 123
+num_float = 123.45
+
+new_num = num_int+num_float
+
+print('i am integer', num_int)
+print('i am float', num_float)
+print('i am new number', new_num)
+
+# type conversion 2
+num_int = str(223)
+num_string = 'play'
+
+new_string = num_int + num_string
+print('i am integer', num_int)
+print('i am string', new_string)
+
+# list & tupple
+
+list_a = ["java", "python", "html", "react","angular"]
+tup_b = ("python", "java", "c#", ".net", "sql")
+
+print('i am list', list_a)
+print('i am tupple', tup_b)
+
+print('slice ', list_a[1:-3])
+print('slice ', list_a[1:2])
+print('slice ', list_a[1:-5])
+
+
+# this is for set
+iset = {22, 'Niva', 5, 'virus', 33, 23}  # set duplicate item not allowed.
+print('i am set example ', iset)
+iset.add('project')
+print('i am add() item set', iset)
+iset.remove(22)
+print('i am remove() item set', iset)
+iset.update([2324, 5, 67])
+print('i am add() item set', iset)
+
+print('..........................')
+jset = {11, '.net', 33, 'raw'}
+print('i am i set', iset)
+print('i am jset', jset)
+print('Union', iset | jset)  # this is for union
+print('Inter-Section', iset & jset)  # this i s for intersection
+print('difference', jset - iset)  # this for difference
+print('expo', jset ^ iset)   #symetric difference
+
+# complex number
+
+number = 3+4j
+print(number.imag)
+print(number.real)
+
+# dictionary
+
+myDict = {"First Name": 'joy', "Last Name": 'Ray'}
+print("element from dictionary", myDict)
+print(myDict['First Name'])
+myDict['salary'] = 2132312
+print(myDict)
+del myDict['Last Name']
+print(myDict)
+
+# range
+
+num = range(5, 10)
+print(num)
+print("this is List example:", list(num))
+print("this is set example", set(num))
+print("this is tupple", tuple(num))
+
+# if else statement
+num = 4
+
+if num > 0:
+        print("positive number")
+else:
+        print("negative number")
+
+# While loop
+
+number = 100
+i = 5
+sum = 0
+
+while i <= number:
+        sum = sum + i
+        i = i + 1
+        print("sum of number", sum)
+
+print('value of i', i)
+
+# for loop
+N = [9, 8, 6, 4]
+
+sum = 0
+for val in N:
+        sum = sum + val
+
+        print("Sum of number", sum)
+
+
+# function
+def func1():
+    print("I am learning Python function")
+    print("still in func1")
+
+
+func1()
+
+
+def square(x):
+    return x * x
+
+
+print(square(4))
+
+
+def multiply(x, y=0):
+    print("value of x=", x)
+    print("value of y=", y)
+
+    return x * y
+
+
+print(multiply(y=2, x=4))
+
+
+def cube(p, q, r):
+    print("value of p=", p)
+    print("value of q=", q)
+    print("value of r=", r)
+
+    return p * q * r
+
+
+print(cube(p=5, q=5, r=5))
+
+
+import datetime
+
+print(datetime.datetime.now())
+
+x, y = 10, 10
+if x > y:
+    print("x is greater", x)
+
+elif x == y:
+    print("both are same")
+
+else:
+    print("y is greater", y)
+
+
+# calender
+
+import calendar
+c = calendar.TextCalendar(calendar.SUNDAY)
+stra = c.formatmonth(2019, 8)
+print(stra)
+
+for name in calendar.month_name:
+    print(name)
+    for day in calendar.day_name:
+        print(day)
+
+# File handling
+f = open("c:/Users/Prasad.keluskar/Desktop/demo.txt", "w+")
+
+for i in range(10):
+    f.write("i am demo file %d \r \n" % (i+1))
+f.close()
+"""
+f = open("c:/Users/Prasad.keluskar/Desktop/demo.txt", "a+")
+
+
+for j in range(5):
+        f.write("i am apended text %d \r \n" % (j+1))
+
+f = open("c:/Users/Prasad.keluskar/Desktop/demo.txt", "r")
+if f.mode == 'r':
+            contents = f.read()
+            print(contents)
+"""
+# check file or directory check
+
+import os.path
+import shutil
+from os import path
+import datetime
+import time
+
+
+
+print("file exit:"+str(path.exists('new.txt')))
+print("file exit:"+str(path.exists("c:/Users/Prasad.keluskar/Desktop/demo.txt")))
+print("Is Directory present:"+str(path.isdir('Desktop')))
+print("Is dir present:"+str(path.isdir('c:/users')))
+
+if path.exists("c:/Users/Prasad.keluskar/Desktop/demo.txt"):
+    src = path.realpath("c:/Users/Prasad.keluskar/Desktop/demo.txt")
+
+    # seprate the path from filter
+    head, tail = path.split(src)
+    print("path:" + head)
+    print("file:" + tail)
+
+    dst = src+" .bck"     # make backup copy by appending '.bck' to file
+    shutil.copy(src, dst)  # make copy of the file
+    shutil.copystat(src, dst)  # copy over the permission modification
+
+z = time.ctime(path.getatime("c:/Users/Prasad.keluskar/Desktop/demo.txt"))
+print(z)
+print(datetime.datetime.fromtimestamp(path.getatime("c:/Users/Prasad.keluskar/Desktop/demo.txt")))
+
+shutil.make_archive('i am zip', 'zip', 'c:/Users/Prasad.keluskar/Desktop')
+
+
+# open url              
+
+import urllib.request
+try:
+web = urllib.request.urlopen('https://www.facebook.com')
+print("url states:"+str(web.getcode()))
+#d = web.read()
+except ConnectionError:
+    print("error from url")
+
+web2 = urllib.request.urlopen('https://www.google.com')
+print("url states:"+str(web2.getcode()))
+
+c = web2.read()
+print(c)               
+
+"""
+
+
+
+
+
+
+
+
+

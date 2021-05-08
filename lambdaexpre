@@ -1,0 +1,15 @@
+
+#lambda expression
+
+p = lambda x, y: x+y
+print(" addition of  x+y ", p(5,9))
+
+#function
+def addx(b):
+    return b*b ;
+print("cube using function",addx(4))
+
+
+
+
+
